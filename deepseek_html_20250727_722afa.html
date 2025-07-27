@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق الاختبارات - تسجيل الدخول</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/rtl.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="app-logo">📝</div>
+        <h1>منشئ الاختبارات المدرسية</h1>
+        
+        <form id="loginForm">
+            <select id="userType" required>
+                <option value="">نوع المستخدم</option>
+                <option value="teacher">معلم</option>
+                <option value="student">طالب</option>
+            </select>
+            
+            <input type="text" id="username" placeholder="اسم المستخدم" required>
+            <input type="password" id="password" placeholder="كلمة المرور" required>
+            
+            <button type="submit">تسجيل الدخول</button>
+            <button type="button" onclick="loginAsGuest()">الدخول كضيف</button>
+        </form>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

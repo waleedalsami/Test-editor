@@ -1,0 +1,36 @@
+<!-- ... نفس الهيد ... -->
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>مرحباً، <span id="userName"></span></h1>
+            <button onclick="logout()">تسجيل الخروج</button>
+        </header>
+        
+        <div class="actions">
+            <button onclick="location.href='create-test.html'">
+                ✏️ إنشاء اختبار جديد
+            </button>
+            <button onclick="loadTests()">
+                📂 الاختبارات المحفوظة
+            </button>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // عرض اسم المستخدم
+        const user = JSON.parse(localStorage.getItem("currentUser"));
+        document.getElementById("userName").textContent = user.username;
+        
+        function logout() {
+            localStorage.removeItem("currentUser");
+            location.href = "index.html";
+        }
+        
+        function loadTests() {
+            const tests = JSON.parse(localStorage.getItem("savedTests") || "[]");
+            // يمكن عرضها في قائمة منبثقة
+            alert(`لديك ${tests.length} اختبار محفوظ`);
+        }
+    </script>
+</body>

@@ -1,0 +1,57 @@
+<!-- ... الهيد ... -->
+<body>
+    <div class="preview-container">
+        <h1 id="previewTitle"></h1>
+        <div id="testPreview"></div>
+        
+        <div class="actions">
+            <button onclick="printTest()">🖨️ طباعة</button>
+            <button onclick="exportTest()">📥 تصدير</button>
+            <button onclick="location.href='create-test.html'">العودة للتعديل</button>
+        </div>
+    </div>
+
+    <script>
+        const test = JSON.parse(localStorage.getItem("currentPreview"));
+        document.getElementById("previewTitle").textContent = test.title;
+        
+        let questionsHTML = "";
+        test.questions.forEach((q, i) => {
+            questionsHTML += `
+                <div class="preview-question">
+                    <h3>السؤال ${i+1}: ${q.text}</h3>
+                    ${q.type === "mcq" ? 
+                        q.options.map((o, j) => `
+                            <div class="preview-option">
+                                <input type="radio" name="q${i}"> ${o}
+                            </div>
+                        `).join("") : ""
+                    }
+                </div>
+            `;
+        });
+        
+        document.getElementById("testPreview").innerHTML = questionsHTML;
+        
+        function printTest() {
+            window.print();
+        }
+        
+        function exportTest() {
+            const exportData = {
+                title: test.title,
+                subject: test.subject,
+                date: new Date().toLocaleDateString(),
+                questions: test.questions
+            };
+            
+            const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `${test.title.replace(/\s+/g, "_")}.json`;
+            a.click();
+        }
+    </script>
+</body>

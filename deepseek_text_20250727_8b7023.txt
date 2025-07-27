@@ -1,0 +1,12 @@
+test-maker-app/
+├── index.html          (شاشة الدخول)
+├── dashboard.html      (القائمة الرئيسية)
+├── create-test.html    (إنشاء اختبار)
+├── preview.html        (معاينة الاختبار)
+├── css/
+│   ├── styles.css      (التصاميم العامة)
+│   └── rtl.css         (دعم اللغة العربية)
+└── js/
+    ├── auth.js         (إدارة الدخول)
+    ├── test-maker.js   (إنشاء الاختبارات)
+    └── storage.js      (التخزين المحلي)

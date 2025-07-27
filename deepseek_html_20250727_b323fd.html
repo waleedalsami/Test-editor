@@ -1,0 +1,22 @@
+<!-- ... الهيد ... -->
+<body>
+    <div class="test-creator">
+        <div class="test-header">
+            <input type="text" id="testTitle" placeholder="عنوان الاختبار">
+            <select id="testSubject">
+                <option value="math">الرياضيات</option>
+                <option value="science">العلوم</option>
+            </select>
+        </div>
+        
+        <div id="questionsContainer"></div>
+        
+        <div class="actions">
+            <button onclick="addMCQQuestion()">إضافة سؤال اختيار من متعدد</button>
+            <button onclick="saveTest()">حفظ الاختبار</button>
+            <button onclick="previewTest()">معاينة</button>
+        </div>
+    </div>
+
+    <script src="js/test-maker.js"></script>
+</body>
